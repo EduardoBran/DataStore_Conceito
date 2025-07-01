@@ -46,7 +46,6 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(
                     this, "Informe um nome", Toast.LENGTH_LONG).show()
             }
-
         }
     }
 }
