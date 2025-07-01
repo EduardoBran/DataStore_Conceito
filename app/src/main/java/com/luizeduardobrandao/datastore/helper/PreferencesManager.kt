@@ -23,7 +23,7 @@ class PreferencesManager(private val context: Context) {
         context.dataStore.edit { pref -> pref[preferencesKey] = value }
     }
 
-    // Faz a leitura do valor associada a chave
+    // Faz a leitura do valor associada a chave **(não usado)**
     suspend fun read(key: String): String {
         val preferencesKey = stringPreferencesKey(key)
         val data = context.dataStore.data.first()
@@ -31,21 +31,16 @@ class PreferencesManager(private val context: Context) {
         return data[preferencesKey] ?: ""
     }
 
-    // Remove chave e valor do DataStore
+    // Remove chave e valor do DataStore **(não usado)**
     suspend fun remove(key: String, value: String) {
         val preferencesKey = stringPreferencesKey(key)
         context.dataStore.edit { pref -> pref.remove(preferencesKey) }
     }
-    
+
     // O uso do Flow faz com que o código seja notificado quando houver uma alteração
     // em dataStore (comum na programação reativa).
-    suspend fun readUsingFlow(key: String) {
-        val preferencesKey = stringPreferencesKey(key)
-        val exampleFlow: Flow<String> =
-            context.dataStore.data.map { pref -> pref[preferencesKey] ?: "" }
-
-        exampleFlow.collect { value ->
-            val s = value
-        }
+    fun readFlow(key: String): Flow<String>{
+        val prefKey = stringPreferencesKey(key)
+        return context.dataStore.data.map { prefs -> prefs[prefKey] ?: "" }
     }
 }
