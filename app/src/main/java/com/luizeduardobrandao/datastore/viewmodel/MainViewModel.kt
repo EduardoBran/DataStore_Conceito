@@ -1,4 +1,4 @@
 package com.luizeduardobrandao.datastore.viewmodel
 
-class UserViewModel {
+class MainViewModel {
 }
