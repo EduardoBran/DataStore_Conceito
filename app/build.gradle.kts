@@ -50,4 +50,7 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     // DataStore
     implementation("androidx.datastore:datastore-preferences:1.1.4")
+    // Lifecycle, LiveData & ViewModelAdd commentMore actions
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
 }
